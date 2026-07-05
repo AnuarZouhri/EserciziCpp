@@ -1,0 +1,14 @@
+protected: come private, ma visibile anche alle classi derivate. 
+
+Gatto(std::string n) : Animale(n): quando crei un Gatto, devi anche costruire la parte 
+Animale al suo interno — questa sintassi chiama il costruttore della classe base.
+
+virtual e override: senza virtual su Animale::verso(), 
+il ciclo con animali[i]->verso() chiamerebbe sempre la versione di Animale, 
+ignorando che l'oggetto è in realtà un Gatto o un Cane. Questo comportamento si chiama polimorfismo: 
+stesso codice, comportamento diverso a seconda del tipo reale dell'oggetto.
+
+Distruttore virtual: senza questo, cancellare un Gatto* tramite un puntatore Animale* 
+(come nel delete animali[i]) causerebbe un comportamento indefinito — verrebbe chiamato 
+solo il distruttore di Animale, non quello di Gatto. Regola pratica: se una classe ha funzioni virtuali, 
+il distruttore deve essere virtuale.
