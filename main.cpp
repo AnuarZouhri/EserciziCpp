@@ -5,7 +5,10 @@
 #include "Gatto.h"
 #include "Cane.h"
 
+#include "pianta.h"
+#include "cactus.h"
 
+using namespace CactusNS;
 
 int main() {
 	std::cout << "--- Oggetto istanziato come Animale ---"<<std::endl;
@@ -35,6 +38,15 @@ int main() {
     for (int i = 0; i < 2; i++) {
         delete animali[i];      // libera la memoria
     }
+
+    std::cout<<std::endl;
+
+    Pianta* pianta;
+    pianta = new Cactus("Cactus");
+
+    pianta->fa_frutti();
+
+    delete pianta;
 
     return 0;
 
