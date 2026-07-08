@@ -1,9 +1,10 @@
-
 #include <iostream>
 #include <string>
 #include <vector>
 #include <array>
 #include <list>
+#include <thread>
+#include <mutex>
 #include "Animale.h"
 #include "Gatto.h"
 #include "Cane.h"
@@ -13,13 +14,43 @@
 
 void esercizio1();
 void esercizio2();
+void esercizio3();
 
 
 using namespace CactusNS;
 
+std::mutex consoleMutex;
+void printMessage(const std::string& message, int threadID){
+        for(int i = 0; i < 5; i++){
+            std::lock_guard<std::mutex> lock(consoleMutex);
+            std::cout<<"Thread "<<threadID<<" : " <<message<<"(iteration: " 
+            <<i<<")"<<std::endl;
+        }
+}
+
+
 int main() {
 
-    std::vector<int> vec =  {8, 4, 5, 9}; //la size è 4
+
+    return 0;
+}
+
+void esercizio3(){
+
+    std::thread thread1(printMessage, "Hello from thread 1",1);
+    std::thread thread2(printMessage, "Hello from thread 2",2);
+
+    thread1.join();
+    thread2.join();
+
+    std::cout<<"Main thread finished"<<std::endl;
+
+    
+
+}
+
+void esercizio2(){
+       std::vector<int> vec =  {8, 4, 5, 9}; //la size è 4
 
     vec.push_back(3);
     vec.push_back(2);
@@ -63,13 +94,7 @@ int main() {
 
     for(const std::string& name: names) std::cout<<name<<" ";
     
-
-
-
-    return 0;
-
 }
-
 
 void esercizio1(){
 
