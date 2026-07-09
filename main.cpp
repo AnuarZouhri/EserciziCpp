@@ -5,6 +5,7 @@
 #include <list>
 #include <thread>
 #include <mutex>
+#include "thread.h"
 #include "Animale.h"
 #include "Gatto.h"
 #include "Cane.h"
@@ -15,24 +16,38 @@
 void esercizio1();
 void esercizio2();
 void esercizio3();
-
+void esercizio4();
 
 using namespace CactusNS;
 
-std::mutex consoleMutex;
-void printMessage(const std::string& message, int threadID){
-        for(int i = 0; i < 5; i++){
-            std::lock_guard<std::mutex> lock(consoleMutex);
-            std::cout<<"Thread "<<threadID<<" : " <<message<<"(iteration: " 
-            <<i<<")"<<std::endl;
-        }
-}
 
 
 int main() {
 
 
     return 0;
+}
+
+void esercizio4(){
+
+        thread producerThread([] { // Creates a producer thread
+        for (int i = 1; i <= 20; ++i) {
+            producer(i); // Produces 20 items
+        }
+    });
+
+    // Delay before starting consumer thread
+    this_thread::sleep_for(chrono::seconds(3));
+
+    thread consumerThread([] { // Creates a consumer thread
+        for (int i = 1; i <= 20; ++i) {
+            consumer(); // Consumes 20 items
+        }
+    });
+
+    producerThread.join(); // Waits for producer thread to finish
+    consumerThread.join(); // Waits for consumer thread to finish
+
 }
 
 void esercizio3(){
