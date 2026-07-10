@@ -24,7 +24,7 @@ using namespace CactusNS;
 
 int main() {
 
-
+    esercizio4();
     return 0;
 }
 
