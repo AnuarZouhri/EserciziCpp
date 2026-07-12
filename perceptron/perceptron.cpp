@@ -4,7 +4,7 @@
 
 
 
-DatasetNormal* generaDataset(int nFeatures, int nSamples) {
+void generaDataset(DatasetNormal* data, int nFeatures, int nSamples) {
     std::mt19937 gen(42); // seed fisso per riproducibilità
     std::uniform_real_distribution<double> dist(-10.0, 10.0);
     double margine = 0.3;
@@ -19,7 +19,7 @@ DatasetNormal* generaDataset(int nFeatures, int nSamples) {
         return (c + bias) > 0;
     };
 
-    DatasetNormal data;
+    
     std::vector<double> temp;
     int tempLabel;
     for(int i = 0; i < nSamples; i++){
@@ -30,10 +30,11 @@ DatasetNormal* generaDataset(int nFeatures, int nSamples) {
         }
         
         tempLabel = sopra(temp) ? 1 : -1;
-        data.samples.push_back({temp, tempLabel});
+        data->samples.push_back({temp, tempLabel});
 
 
     }
 
+    return;
 }
 

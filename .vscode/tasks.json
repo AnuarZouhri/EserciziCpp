@@ -5,11 +5,12 @@
             "label": "C/C++: g++.exe build all files",
             "command": "C:/msys64/ucrt64/bin/g++.exe",
             "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "${fileDirname}\\*.cpp",
-                "-o",
-                "${fileDirname}\\programma.exe"
+            "-fdiagnostics-color=always",
+            "-g",
+            "${fileDirname}\\*.cpp",
+            "${fileDirname}\\perceptron\\*.cpp",
+            "-o",
+            "${fileDirname}\\programma.exe"
             ],
             "options": {
                 "cwd": "C:/msys64/ucrt64/bin"

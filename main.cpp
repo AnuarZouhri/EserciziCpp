@@ -9,6 +9,7 @@
 #include "Animale.h"
 #include "Gatto.h"
 #include "Cane.h"
+#include "perceptron/perceptron.h"
 
 #include "pianta.h"
 #include "cactus.h"
@@ -24,7 +25,19 @@ using namespace CactusNS;
 
 int main() {
 
-    esercizio4();
+    DatasetNormal dt;
+    int nFeatures = 2;
+    int nSamples = 100;
+
+    generaDataset(&dt, nFeatures, nSamples);
+
+    for(size_t i = 0; i < nSamples; i++){
+
+        std::cout<<dt.samples[i].features[0]<<std::endl;
+
+    }
+        
+
     return 0;
 }
 

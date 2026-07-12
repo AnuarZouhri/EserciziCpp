@@ -17,7 +17,7 @@ struct DatasetNormal{
 
 };
 
-DatasetNormal* generaDataset(int nFeatures, int nSamples);
+void generaDataset(DatasetNormal* data, int nFeatures, int nSamples);
 
 
 class Perceptron{
